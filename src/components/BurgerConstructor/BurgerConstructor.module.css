@@ -1,0 +1,33 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+.item {
+    margin: 0;
+    padding: 0;
+    display: block;
+    list-style: none;
+    max-width: 240px;
+}
+
+.about {
+    width: 100%;
+}
+
+.itemContainer {
+    margin: 0;
+    padding: 0;
+}
+
+.priceContainer {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}

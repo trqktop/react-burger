@@ -1,0 +1,17 @@
+/* .list {
+    max-width: 568px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh);
+    overflow-y: scroll;
+}
+
+.item {
+    list-style: none;
+    display: block;
+} */
+
+.costContainer {
+    border: 1px red solid;
+    float: right;
+}
