@@ -1,3 +1,4 @@
+import './resetStyles.css'
 import styles from './BurgerConstructor.module.css'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
@@ -25,10 +26,10 @@ export default function BurgerConstructor({ props }) {
         return (
             <li>
                 <h4>{title}</h4>
-                <ul>
+                <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
                     {
                         arr.map(item => (
-                            <li>
+                            <li key={item._id}>
                                 <figure>
                                     <img src={item.image} />
                                     <figcaption>
@@ -59,7 +60,7 @@ export default function BurgerConstructor({ props }) {
                     Начинка
                 </Tab>
             </div>
-            <ul>
+            <ul style={{ maxHeight: 'calc(100vh - 56px - 50px - 84px)', overflowY: 'scroll' }}>{/*ВРЕМЕННЫЙ РАСЧЕТ. ПЕРЕСЧИТАЬ*/}
                 {renderElement(currentData.bun, "bun")}
                 {renderElement(currentData.main, "main")}
                 {renderElement(currentData.sauce, "sauce")}

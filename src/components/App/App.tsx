@@ -12,7 +12,7 @@ function App() {
       <AppHeader />
       <main className={appStyles.main}>
         <BurgerConstructor props={data} />
-        <BurgerIngredients />
+        <BurgerIngredients props={data} />
       </main>
       <footer></footer>
     </div>

@@ -6,24 +6,20 @@ import { Button } from '@ya.praktikum/react-developer-burger-ui-components'
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components"
 import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
-export default function BurgerIngredients() {
+export default function BurgerIngredients({ props }) {
+
     const [cost, setCost] = React.useState(0)
     const [state, setState] = React.useState(data)
-    React.useEffect(() => {
-        let fullCost = 0;
-        state.forEach(item => fullCost += item.price)
-        setCost(() => fullCost)
-    }, [])
 
 
     const constructorElements = () => {
         return (
             state.map((item, index, arr) => {
                 return (
-                    <div key={index} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <li key={index} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                         <ConstructorElement
                             type={item.type === 'bun' && index === 0 ? 'top' : item.type === 'bun' && index === arr.length - 1 ? 'bottom' : ''}
-                            isLocked={true}
+                            isLocked={index === 0 || index === arr.length - 1}
                             text={item.name}
                             price={item.price}
                             thumbnail={item.image}
@@ -40,7 +36,7 @@ export default function BurgerIngredients() {
                             price={200}
                             thumbnail={state.image}
                         /> */}
-                    </div>
+                    </li>
                 )
             })
         )
@@ -51,9 +47,11 @@ export default function BurgerIngredients() {
     return (
         <section className={styles.ingredientsContainer}>
             <div className='ml-4 mr-4 mt-25'>
-                {constructorElements()}
+                <ul style={{ maxHeight: '40vh', overflowY: 'scroll' }}>
+                    {constructorElements()}
+                </ul>
                 <div className={`${styles.costContainer} mt-10`}>
-                    <span className='mr-2'>{cost}</span>
+                    <span className='mr-2'>{ }</span>
                     <div className='mr-10'>
                         <CurrencyIcon type="primary" />
                     </div>
