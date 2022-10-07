@@ -1,50 +1,68 @@
-import burgerConstructorStyles from './BurgerConstructor.module.css'
+import styles from './BurgerConstructor.module.css'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
-import data from '../../utils/data.js'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 
 
-
-export default function BurgerConstructor() {
-
+export default function BurgerConstructor({ props }) {
     const [current, setCurrent] = React.useState('one')
+    const [currentData, setData] = React.useState(
+        () => {
+            const sorted = {
+                bun: [],
+                main: [],
+                sauce: []
+            }
+            props.map(item => {
+                sorted[item.type].push(item)
+            })
+            return sorted
+        }
+    )
 
-
-    const listItems = () => {
+    const renderElement = (arr, title) => {
         return (
-            data.map(item => (
-                <li className={burgerConstructorStyles.item} key={item._id}>
-                    <figure className={burgerConstructorStyles.itemContainer}>
-                        <img src={item.image} />
-                        <figure className={burgerConstructorStyles.priceContainer}>
-                            <figcaption>{item.price}</figcaption>
-                            <CurrencyIcon type="primary" />
-                        </figure>
-                        <figcaption className={burgerConstructorStyles.about}>{item.name}</figcaption>
-                    </figure>
-                </li>
-            ))
+            <li>
+                <h4>{title}</h4>
+                <ul>
+                    {
+                        arr.map(item => (
+                            <li>
+                                <figure>
+                                    <img src={item.image} />
+                                    <figcaption>
+                                        <span>{item.name}</span>
+                                        <span>{item.price}</span>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </li>
         )
     }
 
 
     return (
         <section>
+            <h1>Соберите свой бургер</h1>
             <div style={{ display: 'flex' }}>
                 <Tab value="one" active={current === 'one'} onClick={setCurrent}>
-                    One
+                    Булки
                 </Tab>
                 <Tab value="two" active={current === 'two'} onClick={setCurrent}>
-                    Two
+                    Соусы
                 </Tab>
                 <Tab value="three" active={current === 'three'} onClick={setCurrent}>
-                    Three
+                    Начинка
                 </Tab>
             </div>
-            <ul className={burgerConstructorStyles.list}>
-                {listItems()}
+            <ul>
+                {renderElement(currentData.bun, "bun")}
+                {renderElement(currentData.main, "main")}
+                {renderElement(currentData.sauce, "sauce")}
             </ul>
         </section>
     )

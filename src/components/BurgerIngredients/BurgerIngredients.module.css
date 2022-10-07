@@ -12,6 +12,15 @@
 } */
 
 .costContainer {
-    border: 1px red solid;
-    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.ingredientsContainer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-height: 100vh;
+    overflow-y: scroll;
 }
