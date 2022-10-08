@@ -1,13 +1,12 @@
-import './resetStyles.css'
 import styles from './BurgerConstructor.module.css'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-
-
+import { Counter } from '@ya.praktikum/react-developer-burger-ui-components'
 
 export default function BurgerConstructor({ props }) {
     const [current, setCurrent] = React.useState('one')
+    const [count, setCount] = React.useState(1)
     const [currentData, setData] = React.useState(
         () => {
             const sorted = {
@@ -25,16 +24,20 @@ export default function BurgerConstructor({ props }) {
     const renderElement = (arr, title) => {
         return (
             <li>
-                <h4>{title}</h4>
-                <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                <h4 className='mt-10 mb-6'>{title}</h4>
+                <ul className={`${styles.grid}`}>
                     {
                         arr.map(item => (
-                            <li key={item._id}>
-                                <figure>
-                                    <img src={item.image} />
-                                    <figcaption>
-                                        <span>{item.name}</span>
-                                        <span>{item.price}</span>
+                            <li style={{ position: 'relative' }} className={`${styles.card}`} key={item._id}>
+                                <Counter count={count} size="default" />
+                                <figure style={{ margin: '0', display: 'block' }}>
+                                    <img className='ml-4 mr-4 mb-1' src={item.image} />
+                                    <figcaption style={{ margin: '0', display: 'block' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+                                            <span className='pr-2'>{item.price}</span>
+                                            <CurrencyIcon type="primary" />
+                                        </div>
+                                        <span style={{ textAlign: 'center' }} className={`mt-1 ${styles.about}`}>{item.name}</span>
                                     </figcaption>
                                 </figure>
                             </li>
@@ -47,8 +50,8 @@ export default function BurgerConstructor({ props }) {
 
 
     return (
-        <section>
-            <h1>Соберите свой бургер</h1>
+        <section className={styles.section}>
+            <h1 className='mt-10 mb-5'>Соберите свой бургер</h1>
             <div style={{ display: 'flex' }}>
                 <Tab value="one" active={current === 'one'} onClick={setCurrent}>
                     Булки
