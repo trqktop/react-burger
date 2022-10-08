@@ -7,7 +7,7 @@ export default function AppHeader() {
         <header className={`${styles.header}`}>
             <nav className={`${styles.header__container} pt-4 pb-4 mt-10`}>
                 <ul className={`${styles.header__list}`}>
-                    <li style={{ alignContent: 'flex-start' }} className={`${styles.header__item} pl-5`}>
+                    <li  className={`${styles.header__item} pl-5`}>
                         <BurgerIcon type="primary" />
                         <span className='ml-2'>Конструктор</span>
                     </li>

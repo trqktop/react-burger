@@ -31,7 +31,7 @@ export default function BurgerConstructor({ props }) {
                 <ul className={`${styles.grid}`}>
                     {
                         arr.map(item => (
-                            <li style={{ position: 'relative' }} className={`${styles.card}`} key={item._id}>
+                            <li className={`${styles.card}`} key={item._id}>
                                 <Counter count={count} size="default" />
                                 <figure style={{ margin: '0', display: 'block' }}>
                                     <img className='ml-4 mr-4 mb-1' src={item.image} />
