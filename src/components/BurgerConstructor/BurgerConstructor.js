@@ -21,6 +21,9 @@ export default function BurgerConstructor({ props }) {
         }
     )
 
+
+
+
     const renderElement = (arr, title) => {
         return (
             <li>
@@ -50,7 +53,7 @@ export default function BurgerConstructor({ props }) {
 
 
     return (
-        <section className={styles.section}>
+        <section style={{ maxHeight: 'calc(100vh - 84px - 40px)' }} className={styles.section}>
             <h1 className='mt-10 mb-5'>Соберите свой бургер</h1>
             <div style={{ display: 'flex' }}>
                 <Tab value="one" active={current === 'one'} onClick={setCurrent}>
@@ -63,11 +66,16 @@ export default function BurgerConstructor({ props }) {
                     Начинка
                 </Tab>
             </div>
-            <ul style={{ maxHeight: 'calc(100vh - 56px - 50px - 84px)', overflowY: 'scroll' }}>{/*ВРЕМЕННЫЙ РАСЧЕТ. ПЕРЕСЧИТАЬ*/}
-                {renderElement(currentData.bun, "bun")}
-                {renderElement(currentData.main, "main")}
-                {renderElement(currentData.sauce, "sauce")}
-            </ul>
+            <div style={{
+                overflowY: 'scroll', height: 'calc(100% - 56px - 36px - 60px - 40px)'
+            }}>
+                <ul >
+                    {renderElement(currentData.bun, "bun")}
+                    {renderElement(currentData.main, "main")}
+                    {renderElement(currentData.sauce, "sauce")}
+                </ul>
+            </div>
         </section>
     )
 }
+

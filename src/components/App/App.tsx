@@ -7,6 +7,8 @@ import BurgerIngredients from '../BurgerIngredients/BurgerIngredients'
 import data from '../../utils/data.js'
 
 function App() {
+
+
   return (
     <div className={appStyles.App}>
       <AppHeader />
