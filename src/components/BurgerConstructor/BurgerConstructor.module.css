@@ -23,4 +23,6 @@ ul {
 
 .about {
     height: 48px;
+    text-align: center;
+    display: block;
 }

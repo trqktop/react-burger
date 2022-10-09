@@ -27,7 +27,7 @@ export default function BurgerConstructor({ props }) {
     const renderElement = (arr, title) => {
         return (
             <li>
-                <h4 className='mt-10 mb-6'>{title}</h4>
+                <h4 className='mt-10 mb-6 text text_type_main-medium'>{title}</h4>
                 <ul className={`${styles.grid}`}>
                     {
                         arr.map(item => (
@@ -37,10 +37,10 @@ export default function BurgerConstructor({ props }) {
                                     <img className='ml-4 mr-4 mb-1' src={item.image} />
                                     <figcaption style={{ margin: '0', display: 'block' }}>
                                         <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
-                                            <span className='pr-2'>{item.price}</span>
+                                            <span className='pr-2 text text_type_digits-default'>{item.price}</span>
                                             <CurrencyIcon type="primary" />
                                         </div>
-                                        <span style={{ textAlign: 'center' }} className={`mt-1 ${styles.about}`}>{item.name}</span>
+                                        <span className={`text text_type_main-default mt-1 ${styles.about}`}>{item.name}</span>
                                     </figcaption>
                                 </figure>
                             </li>
@@ -54,7 +54,7 @@ export default function BurgerConstructor({ props }) {
 
     return (
         <section style={{ maxHeight: 'calc(100vh - 84px - 40px)' }} className={styles.section}>
-            <h1 className='mt-10 mb-5'>Соберите свой бургер</h1>
+            <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите свой бургер</h1>
             <div style={{ display: 'flex' }}>
                 <Tab value="one" active={current === 'one'} onClick={setCurrent}>
                     Булки
@@ -70,9 +70,9 @@ export default function BurgerConstructor({ props }) {
                 overflowY: 'scroll', height: 'calc(100% - 56px - 36px - 60px - 40px)'
             }}>
                 <ul >
-                    {renderElement(currentData.bun, "bun")}
-                    {renderElement(currentData.main, "main")}
-                    {renderElement(currentData.sauce, "sauce")}
+                    {renderElement(currentData.bun, " Булки")}
+                    {renderElement(currentData.main, "Соусы")}
+                    {renderElement(currentData.sauce, "Начинка")}
                 </ul>
             </div>
         </section>

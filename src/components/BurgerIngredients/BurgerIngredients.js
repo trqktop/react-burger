@@ -38,7 +38,7 @@ export default function BurgerIngredients({ props }) {
     return (
         <section className={styles.ingredientsContainer}>
             <div className='ml-4 mr-4 mt-25'>
-                <ul style={{ maxHeight: 'calc(100vh - 228px - 196px )', overflowY: 'scroll' }}>
+                <ul style={{ maxHeight: 'calc(100vh - 228px - 196px )', display: 'flex', flexDirection: 'column', rowGap: '16px', overflowY: 'scroll' }}>
                     {constructorElements()}
                 </ul>
                 <div className={`${styles.costContainer} mt-10`}>
