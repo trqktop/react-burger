@@ -1,0 +1,37 @@
+.grid {
+    margin: 0 auto;
+    padding: 0;
+    max-width: calc(100% - 32px);
+    display: grid;
+    grid-template-columns: 272px 272px;
+    column-gap: 24px;
+    row-gap: 32px;
+}
+
+.card {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.figure {
+    display: block;
+    margin: 0;
+}
+
+.figcaption {
+    margin: 0;
+    display: block;
+}
+
+.priceContainer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.about {
+    height: 48px;
+    text-align: center;
+    display: block;
+}

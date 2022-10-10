@@ -10,13 +10,12 @@ import data from '../../utils/data.js'
 
 function App() {
 
-
   return (
     <div className={appStyles.App}>
       <AppHeader />
       <main className={appStyles.main}>
         <BurgerIngredients data={data} />
-        <BurgerConstructor props={data} />
+        <BurgerConstructor data={data} />
       </main>
       <footer></footer>
     </div>

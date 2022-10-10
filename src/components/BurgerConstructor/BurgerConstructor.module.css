@@ -1,25 +1,32 @@
-/* .list {
-    max-width: 568px;
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100vh);
-    overflow-y: scroll;
+.constructorContainer {
+    margin: 0;
+    padding: 0;
+    max-height: calc(100vh - 324px - 292px);
+    position: relative;
+    margin-top: 180px;
+    margin-bottom: 292px;
 }
 
-.item {
-    list-style: none;
-    display: block;
-} */
+.elements {
+    height: calc(100vh - 324px - 292px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
 
-.costContainer {
+
+
+.purchaseContainer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-top: 136px;
 }
 
-.ingredientsContainer {
+.costContainer {
     margin: 0;
     padding: 0;
-    max-height: 100vh;
-    overflow-y: scroll;
+    display: flex;
+    align-items: center;
 }
