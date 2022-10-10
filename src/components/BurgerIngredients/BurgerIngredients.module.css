@@ -1,25 +1,56 @@
-/* .list {
-    max-width: 568px;
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100vh);
-    overflow-y: scroll;
-}
-
-.item {
+ul {
     list-style: none;
-    display: block;
-} */
-
-.costContainer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.ingredientsContainer {
     margin: 0;
     padding: 0;
-    max-height: 100vh;
+}
+
+.grid {
+    margin: 0 auto;
+    padding: 0;
+    max-width: calc(100% - 32px);
+    display: grid;
+    grid-template-columns: 272px 272px;
+    column-gap: 24px;
+    row-gap: 32px;
+}
+
+.card {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.figure {
+    display: block;
+    margin: 0;
+}
+
+.figcaption {
+    margin: 0;
+    display: block;
+}
+
+.priceContainer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.about {
+    height: 48px;
+    text-align: center;
+    display: block;
+}
+
+.section {
+    max-height: calc(100vh - 84px - 40px);
+}
+
+.tabContainer {
+    display: flex;
+}
+
+.scrollContainer {
     overflow-y: scroll;
+    height: calc(100% - 56px - 40px - 60px - 40px);
 }

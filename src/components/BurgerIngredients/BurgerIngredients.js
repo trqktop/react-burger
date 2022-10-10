@@ -1,58 +1,81 @@
 import styles from './BurgerIngredients.module.css'
+import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
-import data from '../../utils/data.js'
-import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
-import { Button } from '@ya.praktikum/react-developer-burger-ui-components'
-import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components"
-import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import { ListIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import { Counter } from '@ya.praktikum/react-developer-burger-ui-components'
 
-export default function BurgerIngredients({ props }) {
-    const [cost, setCost] = React.useState(0)
-    const [state, setState] = React.useState(props)
-
-    const constructorElements = () => {
-        return (
-            state.map((item, index, arr) => {
-                return (
-                    <li key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        {
-                            index > 0 && index < arr.length - 1 ?
-                                <DragIcon type="primary" /> : <div></div>
-                        }
-                        <ConstructorElement
-                            type={item.type === 'bun' && index === 0 ? 'top' : item.type === 'bun' && index === arr.length - 1 ? 'bottom' : ''}
-                            isLocked={index === 0 || index === arr.length - 1}
-                            text={item.name}
-                            price={item.price}
-                            thumbnail={item.image}
-                        />
-                    </li>
-                )
+export default function BurgerIngredients({ data }) {
+    const [current, setCurrent] = React.useState('one')
+    const [count, setCount] = React.useState(1)
+    const [currentData, setData] = React.useState(
+        () => {
+            const sorted = {
+                bun: [],
+                main: [],
+                sauce: []
+            }
+            data.map(item => {
+                sorted[item.type].push(item)
             })
+            return sorted
+        }
+    )
+
+
+
+
+
+
+    const renderElement = (arr, title) => {
+        return (
+            <li>
+                <h4 className='mt-10 mb-6 text text_type_main-medium'>{title}</h4>
+                <ul className={`${styles.grid}`}>
+                    {
+                        arr.map(item => (
+                            <li className={`${styles.card}`} key={item._id}>
+                                <Counter count={count} size="default" />
+                                <figure className={styles.figure} >
+                                    <img className='ml-4 mr-4 mb-1' src={item.image} />
+                                    <figcaption className={styles.figcaption}>
+                                        <div className={styles.priceContainer}>
+                                            <span className='pr-2 text text_type_digits-default'>{item.price}</span>
+                                            <CurrencyIcon type="primary" />
+                                        </div>
+                                        <span className={`text text_type_main-default mt-1 ${styles.about}`}>{item.name}</span>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </li>
         )
     }
 
 
-
     return (
-        <section className={styles.ingredientsContainer}>
-            <div className='ml-4 mr-4 mt-25'>
-                <ul style={{ maxHeight: 'calc(100vh - 228px - 196px )', display: 'flex', flexDirection: 'column', rowGap: '16px', overflowY: 'scroll' }}>
-                    {constructorElements()}
-                </ul>
-                <div className={`${styles.costContainer} mt-10`}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <span className='mr-2'>{cost}</span>
-                        <div className='mr-10'>
-                            <CurrencyIcon type="primary" />
-                        </div>
-                    </div>
-                    <Button type="primary" size="large">
-                        Нажми на меня
-                    </Button>
-                </div>
+        <section className={styles.section}>
+            <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите свой бургер</h1>
+            <div className={styles.tabContainer}>
+                <Tab value="one" active={current === 'one'} onClick={setCurrent}>
+                    Булки
+                </Tab>
+                <Tab value="two" active={current === 'two'} onClick={setCurrent}>
+                    Соусы
+                </Tab>
+                <Tab value="three" active={current === 'three'} onClick={setCurrent}>
+                    Начинка
+                </Tab>
             </div>
-        </section >
+            <div className={styles.scrollContainer}>
+                <ul>
+                    {renderElement(currentData.bun, " Булки")}{/*ingredients-category  вы*/}
+                    {renderElement(currentData.main, "Соусы")}{/*ingredients-category */}
+                    {renderElement(currentData.sauce, "Начинка")}{/*ingredients-category */}
+                </ul>
+            </div>
+        </section>
     )
 }
+

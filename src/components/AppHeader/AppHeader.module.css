@@ -37,15 +37,19 @@
     color: #F2F2F3;
 }
 
-
-/* style={{ marginRight: 'auto' }} */
-
 .header__item_middle {
     position: absolute;
-    /* transform: translateX(calc(-290px / 3.33)); */
 }
 
 .header__item_middle:before {
     width: 100vw;
     position: relative;
+}
+
+
+
+@media screen and (max-width:1880px) {
+    .header__list {
+        max-width: 1240px;
+    }
 }
