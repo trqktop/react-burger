@@ -17,17 +17,24 @@
 .figure {
     display: block;
     margin: 0;
+    padding: 0;
 }
 
 .figcaption {
     margin: 0;
+    padding: 0;
     display: block;
 }
 
 .priceContainer {
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    display: inline-block;
     text-align: center;
+}
+
+.price {
+    display: inline-block;
+    margin-left: auto;
 }
 
 .about {

@@ -32,7 +32,7 @@ export default function BurgerConstructor({ data }) {
                 </ul>
                 <div className={`${styles.purchaseContainer}`}>
                     <div className={styles.costContainer} >
-                        <span className='mr-2 text text_type_digits-default'>{18992}</span>
+                        <span className='mr-2 text text_type_digits-medium'>{18992}</span>
                         <div className='mr-10' >
                             <CurrencyIcon type="primary" />
                         </div>

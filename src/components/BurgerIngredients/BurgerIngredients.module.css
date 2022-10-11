@@ -5,6 +5,8 @@ ul {
 }
 
 .section {
+    margin: 0;
+    padding: 0;
     max-height: calc(100vh - 84px - 40px);
 }
 

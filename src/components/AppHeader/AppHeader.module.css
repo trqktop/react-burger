@@ -17,7 +17,7 @@
 .header__list {
     margin: 0 auto;
     padding: 0;
-    max-width: calc(100% - 320px * 2);
+    max-width: calc(100vw - 341px * 2);
     list-style: none;
     display: flex;
     align-items: center;

@@ -13,13 +13,13 @@ export default function BurgerIngredients({ data }) {
 
     return (
         <section className={styles.section}>
-            <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите свой бургер</h1>
+            <h1 className='mt-10 mb-5 text text_type_main-large'>Соберите бургер</h1>
             <TabContainer />
             <div className={styles.scrollContainer}>
                 <ul>
-                    <IngredientsCategory title={'buns'} data={buns} />
-                    <IngredientsCategory title={'main'} data={mains} />
-                    <IngredientsCategory title={'sauce'} data={sauces} />
+                    <IngredientsCategory title={'Булки'} data={buns} />
+                    <IngredientsCategory title={'Соусы'} data={sauces} />
+                    <IngredientsCategory title={'Начинка'} data={mains} />
                 </ul>
             </div>
         </section>
