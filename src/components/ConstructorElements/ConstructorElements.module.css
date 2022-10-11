@@ -1,0 +1,23 @@
+.element {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 13.5px;
+    width: 100%;
+}
+
+
+
+.element_top {
+    position: absolute;
+    top: -80px;
+    right: 0;
+}
+
+.element_bot {
+    position: absolute;
+    bottom: -32px;
+    right: 0;
+}

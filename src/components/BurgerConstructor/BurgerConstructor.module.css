@@ -1,0 +1,48 @@
+.constructorContainer {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-top: 180px;
+    margin-bottom: 292px;
+    max-height: calc(100vh - 284px - 252px);
+    min-height: calc(80px * 4 + 16px * 8);
+    position: relative;
+}
+
+.elements {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-height: calc(100vh - 284px - 252px - calc(16px * 3));
+    min-height: calc(80px * 3 + 16px * 9);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+
+.purchaseContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: calc(136px - 16px);
+}
+
+.costContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+
+@media screen and (max-height:900px) {
+    .elements {
+        min-height: 0;
+    }
+
+    .constructorContainer {
+        min-height: 0;
+    }
+}
