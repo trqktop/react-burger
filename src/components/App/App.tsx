@@ -1,28 +1,26 @@
 import React from 'react';
-// import logo from './logo.svg';
 import appStyles from './App.module.css';
 import AppHeader from '../AppHeader/AppHeader';
-
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
 
-// import data from '../../utils/data.js'
 
 function App() {
   const [state, setState] = React.useState({
     success: false,
-    data: {},
+    ingredientsData: [],
     hasError: false,
   })
 
 
   const dataRequest = () => {
+    const url = 'https://norma.nomoreparties.space/api/ingredients'
     setState({ ...state, success: false, hasError: false })
-    fetch('https://norma.nomoreparties.space/api/ingredients')
+    fetch(url)
       .then(dataFromServer => dataFromServer.json())
       .then(dataFromServer => setState({
         success: true,
-        data: { ...dataFromServer },
+        ingredientsData: dataFromServer.data,
         hasError: false
       }))
       .catch(e => {
@@ -34,20 +32,20 @@ function App() {
     dataRequest()
   }, [])
 
-  const { success, data } = { ...state }
-  console.log(data.data)
+  const { success, ingredientsData } = state
+
 
   return (
     <div className={appStyles.App}>
       <AppHeader />
       <main className={appStyles.main}>
         {
-          state.success === true ? (
+          success ? (
             <>
-              {/* <BurgerIngredients data={data} />
-              <BurgerConstructor data={data} /> */}
+              <BurgerIngredients data={ingredientsData} />
+              <BurgerConstructor data={ingredientsData} />
             </>
-          ) : <p>загрузка</p>
+          ) : <p className='mt-10 mb-5 text text_type_main-large'>загрузка...</p>
         }
       </main>
       <footer></footer>
