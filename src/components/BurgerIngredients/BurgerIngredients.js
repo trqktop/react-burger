@@ -18,7 +18,7 @@ export default function BurgerIngredients({ data }) {
     //     const element = document.getElementById(tab);
     //     if (element) element.scrollIntoView({ behavior: "smooth" });
     // };
-    // const findTitleId = () => title === 'Булки' ? 'one' : title === 'Соусы' ? 'two' : 'three'
+    // 
 
     function closeOnOverlay(evt) {
         return evt.currentTarget === evt.target ?
@@ -26,6 +26,12 @@ export default function BurgerIngredients({ data }) {
                 modalOpened: false
             }, [])
             : false
+    }
+
+    function closePopup() {
+        setState({
+            modalOpened: false
+        }, [])
     }
 
     function openModal(data) {
@@ -53,19 +59,19 @@ export default function BurgerIngredients({ data }) {
             <div className={styles.scrollContainer}>
                 <ul>
                     <li>
-                        <h4 className={styles.title}>Булки</h4>
+                        <h4 id='one' className={`text text_type_main-default ${styles.title}`}>Булки</h4>
                         <ul className={styles.gridContainer}>
                             {buns.map(bun => <IngredientsCategory key={bun.id} getModalData={openModal} title={'Булки'} data={bun} />)}
                         </ul>
                     </li>
                     <li>
-                        <h4 className={styles.title}>Соусы</h4>
+                        <h4 id='two' className={`text text_type_main-default ${styles.title}`}>Соусы</h4>
                         <ul className={styles.gridContainer}>
                             {sauces.map(sauce => <IngredientsCategory key={sauce.id} getModalData={openModal} title={'Соусы'} data={sauce} />)}
                         </ul>
                     </li>
                     <li>
-                        <h4 className={styles.title}>Начинка</h4>
+                        <h4 id='three' className={`text text_type_main-default ${styles.title}`}>Начинка</h4>
                         <ul className={styles.gridContainer}>
                             {mains.map(main => <IngredientsCategory key={main.id} getModalData={openModal} title={'Начинка'} data={main} />)}
                         </ul>
@@ -77,27 +83,29 @@ export default function BurgerIngredients({ data }) {
                         <Modal >
                             {
                                 (<>
-                                    <CloseIcon />
-                                    <span className={`text text_type_main-large ${styles.modalTitle}`}>Детали ингредиента </span>
+                                    <span onClick={closePopup} className={`text text_type_main-large ${styles.modalTitle}`}>
+                                        <span>Детали ингредиента</span>
+                                        <CloseIcon />
+                                    </span>
                                     <figure className={styles.modalElement}>
                                         <img src={state.modalImage} className={styles.modalImage} />
                                         <figcaption className={styles.modalAboutElement}>
                                             <span className={`${styles.elementName} text text_type_main-default`}>{state.modalName}</span>
                                             <ul className={`text text_type_digits-default text_color_inactive ${styles.elementsComposition}`}>
                                                 <li className={styles.elementComposition}>
-                                                    <span style={{ display: 'inline-block' }} className={`text text_type_main-default ${styles.itemTitle}`}>Калории</span>
+                                                    <span className={`text text_type_main-default ${styles.itemTitle}`}>Калории</span>
                                                     <span className={styles.itemValue}>{state.modalCalories}</span>
                                                 </li>
                                                 <li className={styles.elementComposition}>
-                                                    <span style={{ display: 'inline-block' }} className={`text text_type_main-default ${styles.itemTitle}`}>Белки</span>
+                                                    <span className={`text text_type_main-default ${styles.itemTitle}`}>Белки</span>
                                                     <span className={styles.itemValue}>{state.modalProteins}</span>
                                                 </li>
                                                 <li className={styles.elementComposition} >
-                                                    <span style={{ display: 'inline-block' }} className={`text text_type_main-default ${styles.itemTitle}`}>Жиры</span>
+                                                    <span className={`text text_type_main-default ${styles.itemTitle}`}>Жиры</span>
                                                     <span className={styles.itemValue}>{state.modalFat}</span>
                                                 </li>
                                                 <li className={styles.elementComposition} >
-                                                    <span style={{ display: 'inline-block' }} className={`text text_type_main-default ${styles.itemTitle}`}>Углеводы</span>
+                                                    <span className={`text text_type_main-default ${styles.itemTitle}`}>Углеводы</span>
                                                     <span className={styles.itemValue}>{state.modalCarbohydrates}</span>
                                                 </li>
                                             </ul>

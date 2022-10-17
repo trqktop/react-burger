@@ -5,23 +5,39 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import ConstructorElements from '../ConstructorElements/ConstructorElements'
 import Modal from '../Modal/Modal'
 import ModalOverlay from '../ModalOverlay/ModalOverlay'
-
-
+import doneImage from '../../images/done.svg'
+import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 export default function BurgerConstructor({ data }) {
+    const [state, setState] = React.useState({
+        modalOpened: false
+    })
+
     const buns = data.filter((item) => item.type === 'bun');
     const bun = buns[0];
     const mains = data.filter((item) => item.type === 'main');
     const sauces = data.filter((item) => item.type === 'sauce');
 
 
+    function closeOnOverlay(evt) {
+        return evt.currentTarget === evt.target ?
+            setState({
+                modalOpened: false
+            }, [])
+            : false
+    }
 
-    // const bun = data.find(
-    //     (ingredient) => ingredient.type === "bun"
-    // );
-    // const ingredients = data.filter(
-    //     (ingredient) => ingredient.type !== "bun"
-    // );
+    function openModal() {
+        setState({
+            modalOpened: true
+        }, [])
+    }
+
+    function closeModal() {
+        setState({
+            modalOpened: false
+        }, [])
+    }
 
     return (
         <section className={styles.constructorContainer}>
@@ -47,26 +63,38 @@ export default function BurgerConstructor({ data }) {
                             <CurrencyIcon type="primary" />
                         </div>
                     </div>
-                    <Button type="primary" size="large">
+                    <Button onClick={openModal} type="primary" size="large">
                         Оформить заказ
                     </Button>
                 </div>
             </div>
-            {/* <ModalOverlay><Modal>
-                {
-                    (<>
-                        <span className={`text text_type_digits-large ${styles.orderId}`}>034536</span>
-                        <span className={`text text_type_main-medium mt-8 ${styles.aboutId}`}>идентификатор заказа</span>
-                        <figure className='pt-15' style={{ display: 'block', border: '1px red solid', maxWidth: 'fit-content' }}>
-                            <img src={''} style={{ margin: 'auto', border: '1px white solid', display: 'block' }} />
-                            <figcaption className='mt-15 text text_type_main-default' style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-                                <span>Ваш заказ начали готовить</span>
-                                <span className='text_color_inactive mt-2'>Дождитесь готовности на орбитальной станции</span>
-                            </figcaption>
-                        </figure>
-                    </>)
-                }
-            </Modal></ModalOverlay> */}
+            {
+                state.modalOpened ?
+                    <ModalOverlay closeOnOverlay={closeOnOverlay}>
+                        <Modal>
+                            {
+                                (<>
+                                    <div onClick={closeModal} className={styles.closeButton}><CloseIcon /></div>
+                                    <span className={`text text_type_digits-large  ${styles.orderId}`}>
+                                        <span>034536</span>
+                                    </span>
+                                    <span className={`text text_type_main-medium mt-8 ${styles.aboutId}`}>идентификатор заказа</span>
+                                    <figure className={`pt-15 ${styles.doneContainer}`} >
+                                        <img className={styles.done} src={doneImage} />
+                                        <figcaption className={`mt-15 text text_type_main-default ${styles.orderContainer}`}>
+                                            <span>Ваш заказ начали готовить</span>
+                                            <span className='text_color_inactive mt-2 mb-30'>Дождитесь готовности на орбитальной станции</span>
+                                        </figcaption>
+                                    </figure>
+                                </>)
+                            }
+                        </Modal>
+                    </ModalOverlay> : ''
+            }
+
         </section >
     )
 }
+
+
+

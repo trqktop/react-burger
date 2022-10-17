@@ -16,9 +16,7 @@ function App() {
     madalOpened: false
   })
 
-
   const url = 'https://norma.nomoreparties.space/api/ingredients';
-
 
   const dataRequest = () => {
     setState({ ...state, success: false, hasError: false })
@@ -39,8 +37,9 @@ function App() {
     dataRequest()
   }, [])
 
-  const { success, ingredientsData, hasError } = state
 
+
+  const { success, ingredientsData, hasError, madalOpened } = state;
 
 
 

@@ -4,12 +4,12 @@ import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-comp
 import React from 'react'
 
 export default function ConstructorElements(props) {
-    const { item, index, pos } = { ...props }
+    const { item, index, pos, handler } = { ...props }
 
- 
 
+    // const findTitleId = () => title === 'Булки' ? 'one' : title === 'Соусы' ? 'two' : 'three'
     return (
-        <li>
+        <li onClick={handler}>
             {
                 pos === 'middle' ?
                     <div className={styles.element}>
