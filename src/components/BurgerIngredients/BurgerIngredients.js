@@ -5,7 +5,7 @@ import TabContainer from '../TabContainer/TabContainer'
 import IngredientsCategory from '../IngredientsCategory/IngredientsCategory'
 import Modal from '../Modal/Modal';
 import ModalOverlay from '../ModalOverlay/ModalOverlay'
-
+import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 
 export default function BurgerIngredients({ data }) {
@@ -20,10 +20,12 @@ export default function BurgerIngredients({ data }) {
     // };
     // const findTitleId = () => title === 'Булки' ? 'one' : title === 'Соусы' ? 'two' : 'three'
 
-    function closeOnOverlay() {
-        setState({
-            modalOpened: false
-        }, [])
+    function closeOnOverlay(evt) {
+        return evt.currentTarget === evt.target ?
+            setState({
+                modalOpened: false
+            }, [])
+            : false
     }
 
     function openModal(data) {
@@ -75,31 +77,33 @@ export default function BurgerIngredients({ data }) {
                         <Modal >
                             {
                                 (<>
+                                    <CloseIcon />
                                     <span className={`text text_type_main-large ${styles.modalTitle}`}>Детали ингредиента </span>
-                                    <figure style={{ display: 'block', border: '1px red solid', maxWidth: 'fit-content', margin: 0 }}>
-                                        <img src={state.modalImage} style={{ margin: 'auto', border: '1px white solid', display: 'block' }} />
-                                        <figcaption className='mt-15 text text_type_main-default' style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-                                            <span>{state.modalName}</span>
-                                            <ul style={{ display: 'flex' }}>
-                                                <li style={{ display: 'flex', flexDirection: 'column' }} className={styles.item}>
-                                                    <span style={{ display: 'inline-block' }} className={styles.itemTitle}>каллории</span>
+                                    <figure className={styles.modalElement}>
+                                        <img src={state.modalImage} className={styles.modalImage} />
+                                        <figcaption className={styles.modalAboutElement}>
+                                            <span className={`${styles.elementName} text text_type_main-default`}>{state.modalName}</span>
+                                            <ul className={`text text_type_digits-default text_color_inactive ${styles.elementsComposition}`}>
+                                                <li className={styles.elementComposition}>
+                                                    <span style={{ display: 'inline-block' }} className={`text text_type_main-default ${styles.itemTitle}`}>Калории</span>
                                                     <span className={styles.itemValue}>{state.modalCalories}</span>
                                                 </li>
-                                                <li style={{ display: 'flex', flexDirection: 'column' }} className={styles.item}>
-                                                    <span style={{ display: 'inline-block' }} className={styles.itemTitle}>белки</span>
+                                                <li className={styles.elementComposition}>
+                                                    <span style={{ display: 'inline-block' }} className={`text text_type_main-default ${styles.itemTitle}`}>Белки</span>
                                                     <span className={styles.itemValue}>{state.modalProteins}</span>
                                                 </li>
-                                                <li style={{ display: 'flex', flexDirection: 'column' }} className={styles.item}>
-                                                    <span style={{ display: 'inline-block' }} className={styles.itemTitle}>жиры</span>
+                                                <li className={styles.elementComposition} >
+                                                    <span style={{ display: 'inline-block' }} className={`text text_type_main-default ${styles.itemTitle}`}>Жиры</span>
                                                     <span className={styles.itemValue}>{state.modalFat}</span>
                                                 </li>
-                                                <li style={{ display: 'flex', flexDirection: 'column' }} className={styles.item}>
-                                                    <span style={{ display: 'inline-block' }} className={styles.itemTitle}>углеводы</span>
+                                                <li className={styles.elementComposition} >
+                                                    <span style={{ display: 'inline-block' }} className={`text text_type_main-default ${styles.itemTitle}`}>Углеводы</span>
                                                     <span className={styles.itemValue}>{state.modalCarbohydrates}</span>
                                                 </li>
                                             </ul>
                                         </figcaption>
                                     </figure>
+
                                 </>)
                             }
                         </Modal>
