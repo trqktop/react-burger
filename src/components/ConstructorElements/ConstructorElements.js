@@ -1,10 +1,12 @@
 import styles from './ConstructorElements.module.css'
 import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
+import React from 'react'
 
 export default function ConstructorElements(props) {
     const { item, index, pos } = { ...props }
 
+ 
 
     return (
         <li>

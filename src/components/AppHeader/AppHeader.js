@@ -5,7 +5,6 @@ import { BurgerIcon, ListIcon, ProfileIcon, Logo } from '@ya.praktikum/react-dev
 export default function AppHeader() {
 
     return (
-
         <header className={`${styles.header}`}>
             <nav className={`${styles.header__container} pt-4 pb-4 mt-10`}>
                 <ul className={`${styles.header__list}`}>

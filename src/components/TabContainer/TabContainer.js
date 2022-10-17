@@ -5,19 +5,23 @@ import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 export default function TabContainer() {
     const [current, setCurrent] = React.useState('one')
 
-    const handleSetCurrent = () => {
-        setCurrent()
-    }
+
+    const setTab = (tab) => {
+        setCurrent(tab);
+        const element = document.getElementById(tab);
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+    };
+
 
     return (
         <div className={styles.tabContainer}>
-            <Tab value="one" active={current === 'one'} onClick={handleSetCurrent}>
+            <Tab value="one" active={current === 'one'} onClick={setTab}>
                 Булки
             </Tab>
-            <Tab value="two" active={current === 'two'} onClick={handleSetCurrent}>
+            <Tab value="two" active={current === 'two'} onClick={setTab}>
                 Соусы
             </Tab>
-            <Tab value="three" active={current === 'three'} onClick={handleSetCurrent}>
+            <Tab value="three" active={current === 'three'} onClick={setTab}>
                 Начинка
             </Tab>
         </div>

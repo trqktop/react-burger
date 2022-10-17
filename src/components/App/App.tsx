@@ -3,6 +3,9 @@ import appStyles from './App.module.css';
 import AppHeader from '../AppHeader/AppHeader';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
+import Modal from '../Modal/Modal';
+import ModalOverlay from '../ModalOverlay/ModalOverlay';
+
 
 
 function App() {
@@ -10,18 +13,22 @@ function App() {
     success: false,
     ingredientsData: [],
     hasError: false,
+    madalOpened: false
   })
 
 
+  const url = 'https://norma.nomoreparties.space/api/ingredients';
+
+
   const dataRequest = () => {
-    const url = 'https://norma.nomoreparties.space/api/ingredients'
     setState({ ...state, success: false, hasError: false })
     fetch(url)
       .then(dataFromServer => dataFromServer.json())
       .then(dataFromServer => setState({
         success: true,
         ingredientsData: dataFromServer.data,
-        hasError: false
+        hasError: false,
+        madalOpened: false
       }))
       .catch(e => {
         setState({ ...state, hasError: true, success: false });
@@ -32,25 +39,35 @@ function App() {
     dataRequest()
   }, [])
 
-  const { success, ingredientsData } = state
+  const { success, ingredientsData, hasError } = state
+
+
+
 
 
   return (
-    <div className={appStyles.App}>
-      <AppHeader />
-      <main className={appStyles.main}>
-        {
-          success ? (
-            <>
-              <BurgerIngredients data={ingredientsData} />
-              <BurgerConstructor data={ingredientsData} />
-            </>
-          ) : <p className='mt-10 mb-5 text text_type_main-large'>загрузка...</p>
-        }
-      </main>
-      <footer></footer>
-    </div>
+    <>
+      <div className={appStyles.App}>
+        <AppHeader />
+        <main className={appStyles.main}>
+          {
+            success ? (
+              <>
+                <BurgerIngredients data={ingredientsData} />
+                <BurgerConstructor data={ingredientsData} />
+              </>
+            ) :
+              <span className='mt-10 mb-5 text text_type_main-large'>загрузка...</span>
+          }
+        </main>
+        <footer>
+        </footer>
+      </div >
+
+    </>
   );
 }
 
 export default App;
+
+
