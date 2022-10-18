@@ -7,6 +7,8 @@ import Modal from '../Modal/Modal'
 import ModalOverlay from '../ModalOverlay/ModalOverlay'
 import doneImage from '../../images/done.svg'
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import PropTypes from 'prop-types';
+
 
 export default function BurgerConstructor({ data }) {
     const [state, setState] = React.useState({
@@ -58,7 +60,7 @@ export default function BurgerConstructor({ data }) {
                 </ul>
                 <div className={`${styles.purchaseContainer}`}>
                     <div className={styles.costContainer} >
-                        <span className='mr-2 text text_type_digits-medium'>{ }</span>
+                        <span className='mr-2 text text_type_digits-medium'>3 попугая</span>
                         <div className='mr-10' >
                             <CurrencyIcon type="primary" />
                         </div>
@@ -98,3 +100,7 @@ export default function BurgerConstructor({ data }) {
 
 
 
+
+BurgerConstructor.propTypes = {
+  data: PropTypes.array,
+}

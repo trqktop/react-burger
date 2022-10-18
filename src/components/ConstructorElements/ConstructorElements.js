@@ -2,12 +2,11 @@ import styles from './ConstructorElements.module.css'
 import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
+import PropTypes from 'prop-types';
 
 export default function ConstructorElements(props) {
     const { item, index, pos, handler } = { ...props }
 
-
-    // const findTitleId = () => title === 'Булки' ? 'one' : title === 'Соусы' ? 'two' : 'three'
     return (
         <li onClick={handler}>
             {
@@ -36,3 +35,7 @@ export default function ConstructorElements(props) {
         </li >
     )
 }
+
+ConstructorElements.propTypes = {
+    props: PropTypes.object,
+};

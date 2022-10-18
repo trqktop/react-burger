@@ -6,20 +6,13 @@ import IngredientsCategory from '../IngredientsCategory/IngredientsCategory'
 import Modal from '../Modal/Modal';
 import ModalOverlay from '../ModalOverlay/ModalOverlay'
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-
+import PropTypes from 'prop-types';
 
 export default function BurgerIngredients({ data }) {
     const [state, setState] = React.useState({
         count: 0,
         modalOpened: false
     })
-    // const setTab = (tab) => {
-    //     setCurrent(tab);
-    //     const element = document.getElementById(tab);
-    //     if (element) element.scrollIntoView({ behavior: "smooth" });
-    // };
-    // 
-
     function closeOnOverlay(evt) {
         return evt.currentTarget === evt.target ?
             setState({
@@ -122,3 +115,12 @@ export default function BurgerIngredients({ data }) {
     )
 }
 
+
+
+
+
+
+
+BurgerIngredients.propTypes = {
+  data: PropTypes.array,
+};

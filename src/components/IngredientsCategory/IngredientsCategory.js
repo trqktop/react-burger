@@ -2,6 +2,7 @@ import styles from './IngredientsCategory.module.css'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { Counter } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
+import PropTypes from 'prop-types';
 export default function IngredientsCategory(props) {
     const { title, data, getModalData } = { ...props }
 
@@ -27,3 +28,8 @@ export default function IngredientsCategory(props) {
         </li>
     )
 }
+
+
+IngredientsCategory.propTypes = {
+    props: PropTypes.object,
+  };
