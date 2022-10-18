@@ -1,0 +1,109 @@
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+    margin: 0;
+    padding: 0;
+    max-height: calc(100vh - 84px - 40px);
+}
+
+
+.scrollContainer {
+    overflow-y: scroll;
+    height: calc(100% - 56px - 40px - 60px - 40px);
+
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 272px 272px;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 24px;
+    justify-content: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 24px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    color: #F2F2F3;
+    font-weight: 700;
+    margin-top: 40px;
+}
+
+
+
+.modalTitle {
+    width: 100%;
+    height: 64px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    text-align: start;
+    margin-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-right: auto;
+    font-size: 36px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    z-index: -1;
+}
+
+.modalElement {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    margin: 0;
+    padding: 0;
+    max-width: 520px;
+    width: 100%;
+}
+
+.modalAboutElement {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 32px;
+    margin-bottom: 60px;
+}
+
+.elementName {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.elementsComposition {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.elementComposition {
+    row-gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemTitle {
+    display: inline-block;
+}
